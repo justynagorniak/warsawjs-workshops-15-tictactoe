@@ -92,7 +92,7 @@ initGame();
 // Check if any of win configuration is redredred (red wins) 
 if (boardCheck.includes('redredred')) {
     setTimeout(() => {    //cherome fix - whay chrome does it ?
-     alert("Red wins");
+     alert("Red wins, wohoo");
      initGame();   
     } ,100) 
     
@@ -101,14 +101,14 @@ if (boardCheck.includes('redredred')) {
 // Check if any of win configuration is blublueblue (red wins) 
 if (boardCheck.includes('blueblueblue')) {
     setTimeout (() => {       
-    alert("Blue wins");
+    alert("Blue wins, wohoo");
     initGame();
     }, 100);
    
 }
 
     if (!emptyFields ) {   // czyli if emptyFields === 0 
-        alert("TIE!op op");
+        alert("TIE!yeah");
         initGame();
       }
   }
