@@ -1,5 +1,10 @@
 body{
     overflow: hidden;
+    font-family: "Arial Black", Gadget, sans-serif;
+    background: url("http://www.pimpyourkitchen.co.uk/dynamic/media/4/images/Designs/kitchen_splashback_design_spring_grass.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
 }
 
 * {
@@ -9,43 +14,67 @@ body{
 
 #roundInfo{
     text-align: center;
-   padding:3%;
+   padding:2%;
 }
 
 .scores{
-    display: flex;
-    justify-content: center;
+   text-align: center;
 }
 .wrapper{
     display: flex;
-    height: 100vh;
+    height: 60vh;
    justify-content: center;
     align-items: center;
 }
 
 .board {
-	height: 298px;
-	width: 298px;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    height: 303px;
+    width: 303px;
+    border-top: 6px solid rgb(255, 223, 45);
+    border-left: 6px solid  rgb(255, 223, 45);
+
     font-size: 0;
    
    
+}
+
+#reset-score{
+    background:  rgb(255, 223, 45);
+    color: black;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.flex{
+    display: flex;
+    justify-content: center;
+    padding:2% 0;
+}
+
+.flex p{
+    padding-right:20px;
 }
 
 .board div {
 	height: 99px;
 	width: 99px;
 	display: inline-block;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border-right: 6px solid rgb(255, 223, 45);
+    border-bottom: 6px solid  rgb(255, 223, 45);
+
+   
 }
 
 
-.red {
-	background-color: crimson;
+.red{
+    /*background-color: crimson;*/
+    background-image:url("https://image.flaticon.com/icons/svg/672/672652.svg");
+    background-size: contain;
+
 }
 
 .blue {
-	background-color: cornflowerblue;
+    /*background-color: cornflowerblue;*/  
+    background-image:url(" https://image.flaticon.com/icons/svg/672/672651.svg");
+    background-size: contain;
 }

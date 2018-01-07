@@ -42,7 +42,6 @@ function updatePlayerScore(player) {
 function roundInfo() {
     var whosRound = document.getElementById("roundInfo");
 
-    whosRound.className = playerClasses[currentPlayer];
     whosRound.innerHTML = `Round for ${currentPlayer}`;  //co to ${} za skladnia ? 
 
 }
@@ -130,7 +129,7 @@ function roundInfo() {
 // Check if any of win configuration is redredred (red wins) 
 if (boardCheck.includes('redredred')) {
     setTimeout(() => {    //cherome fix - whay chrome does it ?
-     alert("Red wins, wohoo");
+     alert("FROG wins!");
      updatePlayerScore('playerA');
      initGame();   
     } ,100) 
@@ -140,7 +139,7 @@ if (boardCheck.includes('redredred')) {
 // Check if any of win configuration is blublueblue (red wins) 
 if (boardCheck.includes('blueblueblue')) {
     setTimeout (() => {       
-    alert("Blue wins, wohoo");
+    alert("RABBIT wins!");
     updatePlayerScore('playerB');
     initGame();
     }, 100);
