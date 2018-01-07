@@ -1,18 +1,51 @@
 document.addEventListener('DOMContentLoaded', function(){      //funkcja anonimowa
-    //step5 emptyFields var
- var emptyFields   
-
-     
+      
     //step3 : declare 2 players as a object : 0 - red, 1 -blue;
 var playerClasses = {   //to obiekt, tworzony jako zmienna
     'playerA' : 'red', 
     'playerB' : 'blue'
 };
+
+var scores = {
+    'playerA' : '0',
+    'playerB' : '0'
+}
+
 var currentPlayer;  // pusta zmienna 
+ 
+//step5 emptyFields var
+var emptyFields;
+var resetButton = document.getElementById('reset-score');   
 
 
  //wywolanie funkcji najpierw powinno byc! hoisting sprawdzic, jakby bylo na koncu tez by dzialalo 
 initGame();
+
+resetButton.addEventListener('click', function() {
+    scores['playerA'] = 0;
+    scores['playerB'] = 0;
+
+    displayPlayerScore('playerA');
+    displayPlayerScore('playerB');
+});
+
+function displayPlayerScore(player) {
+    var score = document.getElementById(`${player}-score`);
+
+    score.innerHTML = `${player} score: ${scores[player]}`;
+}
+
+function updatePlayerScore(player) {
+    scores[player]++;
+}
+
+function roundInfo() {
+    var whosRound = document.getElementById("roundInfo");
+
+    whosRound.className = playerClasses[currentPlayer];
+    whosRound.innerHTML = `Round for ${currentPlayer}`;  //co to ${} za skladnia ? 
+
+}
 
 
     //deklaracja funkcji 
@@ -22,7 +55,11 @@ initGame();
         emptyFields = 9; // deklaracja liczby pól
         fields.forEach(field => field.addEventListener('click',fieldClickHandler));
         fields.forEach(field => field.removeAttribute('class')); // arrow pozwala na definiowanie var field :) 
-  }
+        roundInfo();
+        displayPlayerScore('playerA');
+		displayPlayerScore('playerB');
+ 
+    }
 
   // nastepna deklaracja funkcji 
   function fieldClickHandler() {
@@ -41,6 +78,7 @@ initGame();
       console.log("Hello", this); // tutaj this to referencja, odnosi sie do klieknietego diva
      // this.classList.add("red");  
 
+     roundInfo();
   // remove click handler from clicked element
   this.removeEventListener('click', fieldClickHandler);   //removeEventListener spr
   checkWinner();
@@ -93,23 +131,30 @@ initGame();
 if (boardCheck.includes('redredred')) {
     setTimeout(() => {    //cherome fix - whay chrome does it ?
      alert("Red wins, wohoo");
+     updatePlayerScore('playerA');
      initGame();   
     } ,100) 
-    
+    return; // nie sprawdza dalej funkcji
 }
 
 // Check if any of win configuration is blublueblue (red wins) 
 if (boardCheck.includes('blueblueblue')) {
     setTimeout (() => {       
     alert("Blue wins, wohoo");
+    updatePlayerScore('playerB');
     initGame();
     }, 100);
-   
+    return; // nie sprawdza dalej funkcji
 }
 
     if (!emptyFields ) {   // czyli if emptyFields === 0 
-        alert("TIE!yeah");
-        initGame();
+
+        setTimeout(() => {
+            alert("TIE!yeah"); //blad !
+            initGame();
+        }, 100);
+      
+        
       }
   }
 
