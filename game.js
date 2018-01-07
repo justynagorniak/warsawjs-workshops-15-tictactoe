@@ -20,7 +20,8 @@ initGame();
         var fields = document.querySelectorAll('.board > div'); //pobiera i zwraca !tablice! divow 
         currentPlayer = 'playerA';
         emptyFields = 9; // deklaracja liczby pól
-        fields.forEach(fields => fields.addEventListener('click',fieldClickHandler));
+        fields.forEach(field => field.addEventListener('click',fieldClickHandler));
+        fields.forEach(field => field.removeAttribute('class')); // arrow pozwala na definiowanie var field :) 
   }
 
   // nastepna deklaracja funkcji 
@@ -74,36 +75,41 @@ initGame();
  var diagonal1 = fields[0].className + fields[4].className + fields[8].className;
  var diagonal2 = fields[6].className + fields[4].className + fields[2].className;
 
+ //funkcja 'includes' wbudowana do tablicy, nowa w es6; sprawdza czy tablica zawiera dany element;
+ 
+ //step 6a
+ var boardCheck = [
+    row1,
+    row2,
+    row3,
+    column1,
+    column2,
+    column3,
+    diagonal1,
+    diagonal2
+ ];
+
 // Check if any of win configuration is redredred (red wins) 
-if ( row1 === 'redredred' ||
-    row2 === 'redredred' ||
-    row3 === 'redredred' || 
-    column1 === 'redredred' ||   
-    column2 === 'redredred' ||   
-    column3 === 'redredred' ||
-    diagonal1 === 'redredred' ||
-    diagonal2 === 'redredred' ) {
-    alert("Red wins");
-    return;
+if (boardCheck.includes('redredred')) {
+    setTimeout(() => {    //cherome fix - whay chrome does it ?
+     alert("Red wins");
+     initGame();   
+    } ,100) 
+    
 }
 
 // Check if any of win configuration is blublueblue (red wins) 
-if ( row1 === 'blublueblue' ||
-    row2 === 'blublueblue' ||
-    row3 === 'blublueblue' || 
-    column1 === 'blublueblue' ||   
-    column2 === 'blublueblue' ||   
-    column3 === 'blublueblue' ||
-    diagonal1 === 'blublueblue' ||
-    diagonal2 === 'blublueblue' ) {
+if (boardCheck.includes('blueblueblue')) {
+    setTimeout (() => {       
     alert("Blue wins");
-    return;
+    initGame();
+    }, 100);
+   
 }
 
-
     if (!emptyFields ) {   // czyli if emptyFields === 0 
-        alert("TIE!");
-        return;
+        alert("TIE!op op");
+        initGame();
       }
   }
 
