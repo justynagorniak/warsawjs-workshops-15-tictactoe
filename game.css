@@ -33,7 +33,7 @@ body{
     width: 303px;
     border-top: 6px solid rgb(255, 223, 45);
     border-left: 6px solid  rgb(255, 223, 45);
-
+    background: rgba(255, 223, 45,0.2);
     font-size: 0;
    
    
